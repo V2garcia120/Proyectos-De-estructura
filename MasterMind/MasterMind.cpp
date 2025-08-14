@@ -17,8 +17,13 @@ int main()
     uniform_int_distribution<> dist(MIN, MAX);
 
     //Declaracion de variables
-    int clave[LONGITUD],jugadas[LONGITUD],historial_jugadas[MAX_INTENTOS][LONGITUD], intentos, i, j, valor, aciertos, vj, vi = 0;
-	string historial_pistas[MAX_INTENTOS][LONGITUD];
+    int clave[LONGITUD]; //Combinación secreta
+    int jugadas[LONGITUD]; //Jugadas en cada intento
+    int historial_jugadas[MAX_INTENTOS][LONGITUD]; //Historial de jugadas
+	string historial_pistas[MAX_INTENTOS][LONGITUD]; //Historial de pistas
+    int intentos = 0; //Cantidad de intentos
+    int valor; 
+    int aciertos;
 
 	//imprimir logo y mensaje de bienvenida
 	printLogo();
@@ -44,7 +49,7 @@ int main()
             historial_pistas[i][j] = "X";
 
     //loop para guardar la clave
-    for (i = 0; i < LONGITUD; i++)
+    for (int i = 0; i < LONGITUD; i++)
     {
         int num;
         sleep_for(milliseconds(500));
@@ -59,37 +64,35 @@ int main()
     cout << "\n\nJuego Iniciado!\n\n";
 	pause();
 	clearScreen();
-	intentos = MAX_INTENTOS;
 	bool gano = false; //bandera para saber si se ha ganado
 	cout << "La clave ha sido generada, comienza a adivinarla!\n\n";
 	sleep_for(seconds(1));
     //loop para hacer los intentos
-    for (j = 0; j < intentos && !gano; j++)
+    for (int i = 0; i < MAX_INTENTOS && !gano; i++)
     {
+       intentos++;
 	   clearScreen();   
-	   historial_de_jugadas(historial_jugadas,historial_pistas, j);
-       cout << "\nIntento # "<< j + 1<< "\n";
-       vi = 0;//reiniciando contador de vi
+	   historial_de_jugadas(historial_jugadas,historial_pistas, intentos - 1);
+       cout << "\nIntento # "<< intentos << "\n";
 
        //loop para registrar las jugadas
-       while (vi < LONGITUD )
+       for (int j = 0; j < LONGITUD; j++ )
        {
-           cout << "introduzca el numero " << vi + 1 << ": ";
+           cout << "Introduzca el numero " << j + 1 << ": ";
            valor = getInt();
            if (numeroEn(jugadas, valor))
            {
                cout << "Ya has seleccionado este numero, intenta otro. \n";
                continue; 
            }
-           jugadas[vi] = valor;
+           jugadas[j] = valor;
 		   //guardando las jugadas en el historial
-		   historial_jugadas[j][vi] = jugadas[vi];
-           vi++;
+		   historial_jugadas[i][j] = jugadas[j];
 		
        }
        cout << '\n';
 
-       aciertos = marcar_pistas_y_aciertos(clave, jugadas,historial_pistas,j);
+       aciertos = marcar_pistas_y_aciertos(clave, jugadas,historial_pistas, intentos - 1);
        if (aciertos == LONGITUD)
        {
            gano = true;
@@ -102,10 +105,10 @@ int main()
     if (gano)
     {
 		clearScreen();
-		historial_de_jugadas(historial_jugadas, historial_pistas, j);
+		historial_de_jugadas(historial_jugadas, historial_pistas, intentos);
         cout << "la clave era: ";
-        for (vj = 0; vj < LONGITUD; vj++) { cout << clave[vj]; }
-		cout << "\ncalificacion: " << calificacion(j) << "\n";
+        for (int i = 0; i < LONGITUD; i++) { cout << clave[i]; }
+		cout << "\ncalificacion: " << calificacion(intentos) << "\n";
         cout << "\n\nFelicidades haz adivinado la clave\n\nGracias por jugar a MasterMInd!";
 		cout << "\n\nPresiona enter para salir";
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -121,7 +124,7 @@ int main()
     else
     {
         cout << "\n\nGracias por participar, la clave era: ";
-        for (vj = 0; vj < LONGITUD; vj++) { cout << clave[vj]; }
+        for (int i = 0; i < LONGITUD; i++) { cout << clave[i]; }
 		cout << "\n\nMejor suerte la proxima vez!\n";
 		cout << "\n\nPresiona enter para salir";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
