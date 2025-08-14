@@ -124,9 +124,6 @@ int marcar_pistas_y_aciertos(int clave[],int jugadas[],string historial_pista[][
 )
 {
     int aciertos = 0;
-    //arrays para marcar si en esa posicion hay una coincidencia
-    bool clave_usada[LONGITUD] = { false };
-    bool jugada_usada[LONGITUD] = { false };
 
     //guarda las C de las coincidencias y marca las otras como X
     for (int i = 0; i < LONGITUD; i++)
@@ -135,9 +132,6 @@ int marcar_pistas_y_aciertos(int clave[],int jugadas[],string historial_pista[][
         {
             historial_pista[intento_actual][i] = "C";
             aciertos++;
-            clave_usada[i] = true;
-            jugada_usada[i] = true;
-            
         }
         else
         {
@@ -151,11 +145,9 @@ int marcar_pistas_y_aciertos(int clave[],int jugadas[],string historial_pista[][
         if (historial_pista[intento_actual][i] == "C") continue;
         for (int k = 0; k < LONGITUD; k++)
         {
-            if (!clave_usada[k] && !jugada_usada[i] && clave[k] == jugadas[i])
+            if (clave[k] == jugadas[i])
             {
                 historial_pista[intento_actual][i] = "F";
-                clave_usada[k] = true;
-                jugada_usada[i] = true;
                 break;
             }
         }
