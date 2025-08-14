@@ -4,9 +4,9 @@
 #ifndef MISFUNCIONES_h
 #define MISFUNCIONES_h
 
-bool numeroEn(int array[], int numero);
+bool numeroEstaEn(int array[], int numero);
 int marcar_pistas_y_aciertos(int clave[], int jugadas[], std::string historial_pista[][LONGITUD], int intentos);
-int getInt();
+int pedirNumero();
 void clearScreen();
 void pause();
 void printLogo();
