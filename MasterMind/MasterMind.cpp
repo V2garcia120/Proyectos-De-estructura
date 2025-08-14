@@ -121,12 +121,7 @@ int main()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin.get(); // Espera a que el usuario presione Enter
         clearScreen();
-        cout << "hecho por: Vismil Garcia,Vismil Garcia, Jeremy Garcia, Hesler Cuevas, Diana Lantigua, Josephine Rosario, Ivan Joa. \n";
-        sleep_for(seconds(1));
-        clearScreen();
-        cout << "Cerrando MasterMind";
-        sleep_for(seconds(1));
-		clearScreen();
+    
     }
     else
     {
@@ -137,17 +132,17 @@ int main()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cin.get(); // Espera a que el usuario presione Enter
 		clearScreen();
-		cout << "Gracias por jugar a MasterMInd!";
-		sleep_for(seconds(1));
-		clearScreen();
-		cout << "hecho por: Vismil Garcia, Jeremy Garcia, Hesler Cuevas, Diana Lantigua, Josephine Rosario y Ivan Joa. \n";
-		sleep_for(seconds(1));
-		clearScreen();
-        cout << "Cerrando MasterMind";
-		sleep_for(seconds(1));
-		clearScreen();
 
     }
+    cout << "Gracias por jugar a MasterMInd!";
+    sleep_for(seconds(1));
+    clearScreen();
+    cout << "hecho por: Vismil Garcia, Jeremy Garcia, Hesler Cuevas, Diana Lantigua, Josephine Rosario y Ivan Joa. \n";
+    sleep_for(seconds(1));
+    clearScreen();
+    cout << "Cerrando MasterMind";
+    sleep_for(seconds(1));
+    clearScreen();
 }
 
 
