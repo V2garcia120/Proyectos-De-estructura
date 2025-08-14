@@ -1,4 +1,4 @@
-#include <string>
+
 #include "constantes.h"
 
 #ifndef MISFUNCIONES_h

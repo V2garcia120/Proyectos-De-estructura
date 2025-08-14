@@ -1,18 +1,23 @@
+/*
+    Tarea 1. Master Mind
+  
+    Master Mind es un juego que consiste en adivinar 4 números ocultos. Los números están en un
+    rango de 1 a 6. Tendrá 10 intentos para adivinar a clave oculta de 4 números (o dígitos) entre 1
+    y 6. La mejor calificación se obtendrá haciendo el mínimo de intentos para adivinar la clave.
 
+   
+   Autores: Vismil Garcia - 1128719, Jeremy Garcia - 1127276, Hesler Cuevas - 1127855, Diana Lantigua - 1126796, Josephine Rosario - 1127597 e Ivan Joa - 1127943.
 
+   Fecha: 14/8/2025
 
-
-
-
-
-
-#include <thread>// Libreria para manejar el tiempo
+*/
+#include <thread>// // Permite crear y manejar múltiples hilos de ejecución en paralelo (lo usamos para pausar el programa)
 #include <chrono>// Libreria para manejar el tiempo
-#include <iostream>// Libreria para manejar el tiempo
+#include <iostream>// Librerias para la entrada y salida.
 #include <random>//Libreria para generar numeros aleatorios
 #include <limits>// Libreria para manejar limites de entrada
-#include "constantes.h"// Libreria que contiene las constantes del juego
-#include "mfunciones.h"// Libreria que contiene las funciones del juego
+#include "constantes.h"// header que contiene las constantes del juego
+#include "mfunciones.h"// header que contiene las funciones del juego
 using namespace std;
 using namespace this_thread;
 using namespace chrono;
