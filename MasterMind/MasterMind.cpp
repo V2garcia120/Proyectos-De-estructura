@@ -126,31 +126,25 @@ int main()
        fill(jugadas, jugadas + LONGITUD, 0);
     
     }
-
+    clearScreen();
+    historial_de_jugadas(historial_jugadas, historial_pistas, intentoActual);
     if (gano)
     {
-		clearScreen();
-		historial_de_jugadas(historial_jugadas, historial_pistas, intentoActual);
         cout << "la clave era: ";
         for (int vj = 0; vj < LONGITUD; vj++) { cout << clave[vj]<<" "; }
 		cout << "\ncalificacion: " << calificacion(intentoActual) << "\n";
         cout << "\n\nFelicidades haz adivinado la clave\n\nGracias por jugar a MasterMInd!";
-		cout << "\n\nPresiona enter para salir";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin.get(); // Espera a que el usuario presione Enter
-        clearScreen();
     }
     else
     {
         cout << "\n\nGracias por participar, la clave era: ";
         for (int vj = 0; vj < LONGITUD; vj++) { cout << clave[vj]<<" "; }
 		cout << "\n\nMejor suerte la proxima vez!\n";
-		cout << "\n\nPresiona enter para salir";
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cin.get(); // Espera a que el usuario presione Enter
-		clearScreen();
-
     }
+    cout << "\n\nPresiona enter para salir";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get(); // Espera a que el usuario presione Enter
+    clearScreen();
     cout << "Gracias por jugar a MasterMInd!";
     sleep_for(seconds(1));
     clearScreen();

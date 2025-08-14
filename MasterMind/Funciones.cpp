@@ -86,7 +86,7 @@ void historial_de_jugadas(int historialJugadas[][LONGITUD],string historialPista
 }
 
 
-//funcion que pide un entero y devuelve 0 si no es valido
+//funcion que pide un entero y devuelve -1 si no es valido
 int pedirNumero()
 {
     int numero;
