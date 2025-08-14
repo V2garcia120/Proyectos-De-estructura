@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 #include <thread>// Libreria para manejar el tiempo
 #include <chrono>// Libreria para manejar el tiempo
 #include <iostream>// Libreria para manejar el tiempo
@@ -17,9 +25,14 @@ int main()
     uniform_int_distribution<> dist(MIN, MAX);
 
     //Declaracion de variables
-    int clave[LONGITUD],jugadas[LONGITUD],historial_jugadas[MAX_INTENTOS][LONGITUD],valor, aciertos;
-	string historial_pistas[MAX_INTENTOS][LONGITUD];
-
+	int clave[LONGITUD];//Combinacion Secreta generada por la computadora
+	int jugadas[LONGITUD];//array que guarda las jugadas del usuario
+	int historial_jugadas[MAX_INTENTOS][LONGITUD];//array que guarda el historial de jugadas del usuario
+	int valor;//variable que guarda el valor introducido por el usuario
+	int aciertos;//variable que guarda el numero de aciertos del usuario
+	string historial_pistas[MAX_INTENTOS][LONGITUD];//array que guarda el historial de pistas del usuario
+    // -----------------------------------------------------//
+  
 	//imprimir logo y mensaje de bienvenida
 	printLogo();
     cout << "\nBienvenidos a MasterMind\n\n";
@@ -75,12 +88,12 @@ int main()
        //display de jugadas
 	   historial_de_jugadas(historial_jugadas,historial_pistas, intentoActual);
        cout << "\nIntento # "<< intentoActual + 1<< "\n";
-       int vi = 0;//reiniciando contador de vi
+       int j = 0;//reiniciando contador de vi
 
        //loop para registrar las jugadas
-       while (vi < LONGITUD )
+       while (j < LONGITUD )
        {
-           cout << "introduzca el numero " << vi + 1 << ": ";
+           cout << "introduzca el numero " << j + 1 << ": ";
            valor = pedirNumero();
 
 		   // la funcion pedirNumero() devuelve -1 si la entrada no es valida
@@ -90,11 +103,11 @@ int main()
                cout << "Ya has seleccionado este numero, intenta otro. \n";
                continue; 
            }
-           jugadas[vi] = valor;
+           jugadas[j] = valor;
 
 		   //guardando las jugadas en el historial
-		   historial_jugadas[intentoActual][vi] = jugadas[vi];
-           vi++;
+		   historial_jugadas[intentoActual][j] = jugadas[j];
+           j++;
 		
        }
        cout << '\n';
@@ -121,7 +134,6 @@ int main()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin.get(); // Espera a que el usuario presione Enter
         clearScreen();
-    
     }
     else
     {
