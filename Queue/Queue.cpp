@@ -61,6 +61,7 @@ int main()
             break;
         case 3:
             mostrar(first, last, true);
+            cout << "\nSe ha vaciado la cola" << endl;
             pause();
             break;
         case 4:
@@ -159,14 +160,13 @@ void enqueue(Nodo *&first, Nodo *&last, int val, int prioridad)
 }
 void dequeue(Nodo *&first, Nodo*&last)
 {
-    Nodo* aux = new Nodo();
-	int cantidad = cantidadEle(first, last);//obtenemos la cantidad de elementos en la cola
-	if (cantidad == 0)//cola vacia
+    Nodo* aux = nullptr;
+	if (first==last==NULL)//cola vacia
     {
         cout << "No hay elementos en la cola.\n";
         return;
     }
-	else if (cantidad == 1)//cola con un solo elemento
+	else if (first == last)//cola con un solo elemento
     {
         cout << first->val << "\n";
         aux = first;
@@ -185,15 +185,16 @@ void dequeue(Nodo *&first, Nodo*&last)
     }
 }
 void mostrar(Nodo *&first, Nodo *&last, bool eliminar)
-{   
+{
+    Nodo* aux = nullptr;
     if (eliminar == true) 
     {
-        int cantidad = cantidadEle(first, last);
-        while (cantidad > 0)
+        while (first != NULL)
         {
             cout << first->val << " ";
+            aux = first;
             first = first->next;
-            cantidad--;
+            delete aux;
         }
         first = NULL;
         last = NULL;
