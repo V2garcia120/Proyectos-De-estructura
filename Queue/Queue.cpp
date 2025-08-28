@@ -1,3 +1,23 @@
+/*
+   Tarea 3. Queue
+
+    Una Cola (Queue) es una estructura de datos en donde el primero en entrar es el primero en salir. Para
+    nuestro caso, haremos el problema un poco mas complejo añadiéndole lo que se conoce como
+    prioridad. En los casos en que una Cola tiene prioridad se considera esta al momento de insertar un
+    nuevo nodo a la estructura. La Cola tiene la siguiente forma para los nodos:
+    struct Queue {
+     int dato;
+     Queue *next;
+    };
+
+
+   Autores: Vismil Garcia - 1128719, Jeremy Garcia - 1127276, Hesler Cuevas - 1127855, Diana Lantigua - 1126796, Josephine Rosario - 1127597 e Ivan Joa - 1127943.
+
+   Fecha: 28/8/2025
+
+*/
+
+
 #include <limits>
 #include <iostream>
 using namespace std;
@@ -11,7 +31,7 @@ struct Nodo
         val = 0;
         next = nullptr;
     }
-    Nodo(int x)
+    Nodo(int x)//Constructor para iniciar un nodo con un dato
     {
         val = x;
         next = nullptr;
@@ -161,7 +181,7 @@ void enqueue(Nodo *&first, Nodo *&last, int val, int prioridad)
 void dequeue(Nodo *&first, Nodo*&last)
 {
     Nodo* aux = nullptr;
-	if (first==last==NULL)//cola vacia
+    if (first == NULL&&last == NULL)//cola vacia
     {
         cout << "No hay elementos en la cola.\n";
         return;
